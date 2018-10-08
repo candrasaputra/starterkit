@@ -35,3 +35,4 @@ info() : A table showing migrations information.
 help() : Displays a help section.
 
 IF YOU WANT MAKE FOREIGN KEY YOU CAN USING db_halper (Original author : Natan Felles <natanfelles@gmail.com>)
+---------------------------------------------------------
