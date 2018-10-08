@@ -1,0 +1,6 @@
+{
+    "require": {
+        "fzaninotto/faker": "^1.7",
+        "mailjet/mailjet-apiv3-php": "^1.2"
+    }
+}
