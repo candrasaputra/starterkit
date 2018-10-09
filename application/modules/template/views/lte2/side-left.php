@@ -5,21 +5,11 @@ $menu = array();
 
 // Menu Dashboard
 $menu['Dashboard'] = array('icon' => 'fa fa-dashboard', 'link' => 'dashboard', );
-
-if ($this->ion_auth->in_role(3)) {
-$menu['Log'] = array('icon' => 'fa fa-eye', 'link' => 'logsecurity', );
-}
-
-if ($this->ion_auth->in_role(array(4))) {
-  $menu['Master'] = array('icon' => 'fa fa-database', 'link' => '#', );
-
-  if ($this->ion_auth->in_role(4)) {
-  $menu['Master']['sub']['Users'] = array(
-                      'icon' => 'fa fa-users',
-                      'link' => 'users'
-                    );
-  }
-}
+$menu['Master'] = array('icon' => 'fa fa-database', 'link' => '#', );
+$menu['Master']['sub']['Users'] = array(
+                    'icon' => 'fa fa-users',
+                    'link' => 'users'
+                  );
  ?>
 
 <aside class="main-sidebar">

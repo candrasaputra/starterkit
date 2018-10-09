@@ -58,3 +58,4 @@ $route['users'] = 'users/auth/index';
 $route['change_password'] = 'users/auth/change_password';
 $route['login'] = 'users/auth/login';
 $route['logout'] = 'users/auth/logout';
+$route['forgot_password'] = 'users/auth/forgot_password';

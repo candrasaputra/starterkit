@@ -60,6 +60,12 @@ class Auth extends MX_Controller
 	 */
 	public function login()
 	{
+		if ($this->ion_auth->logged_in())
+		{
+			// redirect them to dashboard if logged
+			redirect('dashboard', 'refresh');
+		}
+
 		$this->data['title'] = $this->lang->line('login_heading');
 
 		// validate form input
@@ -84,7 +90,7 @@ class Auth extends MX_Controller
 				// if the login was un-successful
 				// redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+				redirect('login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -119,7 +125,7 @@ class Auth extends MX_Controller
 
 		// redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('auth/login', 'refresh');
+		redirect('login', 'refresh');
 	}
 
 	/**
@@ -133,7 +139,7 @@ class Auth extends MX_Controller
 
 		if (!$this->ion_auth->logged_in())
 		{
-			redirect('auth/login', 'refresh');
+			redirect('login', 'refresh');
 		}
 
 		$user = $this->ion_auth->user()->row();
@@ -187,7 +193,7 @@ class Auth extends MX_Controller
 			else
 			{
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect('auth/change_password', 'refresh');
+				redirect('change_password', 'refresh');
 			}
 		}
 	}
@@ -227,7 +233,7 @@ class Auth extends MX_Controller
 
 			// set any errors and display the form
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'forgot_password', $this->data);
+			$this->_render_page('users/auth' . DIRECTORY_SEPARATOR . 'forgot_password', $this->data);
 		}
 		else
 		{
@@ -247,7 +253,7 @@ class Auth extends MX_Controller
 				}
 
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect("auth/forgot_password", 'refresh');
+				redirect("users/auth/forgot_password", 'refresh');
 			}
 
 			// run the forgotten password method to email an activation code to the user
@@ -257,12 +263,12 @@ class Auth extends MX_Controller
 			{
 				// if there were no errors
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
+				redirect("users/auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
 			}
 			else
 			{
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect("auth/forgot_password", 'refresh');
+				redirect("users/auth/forgot_password", 'refresh');
 			}
 		}
 	}
