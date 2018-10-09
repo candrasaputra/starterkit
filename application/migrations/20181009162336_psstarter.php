@@ -1,7 +1,10 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
 
-class Migration_Install_ion_auth extends CI_Migration {
+defined('BASEPATH') OR exit('No direct script access allowed');
 
+class Migration_psstarter extends CI_Migration {
+
+	
 	public function up()
 	{
 		// Drop table 'groups' if it exists
@@ -131,6 +134,12 @@ class Migration_Install_ion_auth extends CI_Migration {
 				'type' => 'VARCHAR',
 				'constraint' => '20',
 				'null' => TRUE
+			),
+			'changePwd' => array(
+				'type' => 'TINYINT',
+				'constraint' => '1',
+				'default' => 0,
+				'null' => FALSE
 			)
 
 		));
@@ -154,6 +163,7 @@ class Migration_Install_ion_auth extends CI_Migration {
 			'last_name' => 'istrator',
 			'company' => 'ADMIN',
 			'phone' => '0',
+			'changePwd' => 1,
 		);
 		$this->db->insert('users', $data);
 
@@ -238,4 +248,7 @@ class Migration_Install_ion_auth extends CI_Migration {
 		$this->dbforge->drop_table('users_groups', TRUE);
 		$this->dbforge->drop_table('login_attempts', TRUE);
 	}
+
 }
+
+?>

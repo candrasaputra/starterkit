@@ -19,7 +19,6 @@ public function index(){
 public function process_ubah(){
     $this->load->model('users/users_m');
     $this->load->library(array('ion_auth'));
-    $this->load->library('ownlog');
 
     $user = $this->ion_auth->user()->row();
 
@@ -29,12 +28,9 @@ public function process_ubah(){
 
     if ($this->form_validation->run($this) === FALSE) {
         $this->session->set_flashdata('message', validation_errors());
-        $this->ownlog->log_security(6, $user->id);
         redirect('changepwd');
     }else{
         $this->session->set_flashdata('message', 'Password Berhasil diubah!!');
-
-        $this->ownlog->log_security(5, $user->id, "berhasil mengubah password");
 
         $identity = $this->session->userdata('identity');
 

@@ -106,7 +106,7 @@
         
 
         
-        <img class="avatar" src="<?php echo base_url()?>assets/img/lain/lock.png">
+        <img class="avatar" src="<?php echo base_url()?>assets/img/other/lock.png">
        
         <div class="form-box">
         <?php if ($this->session->flashdata('message')): ?>
@@ -118,7 +118,7 @@
         
         <div class="alert alert-info alert-dismissible bts-bwh" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <center><strong>TOLONG DIBACA!</strong><br/>Demi keamanan dan kenyamanan kedepannya Anda diwajibakan untuk mengubah password sebelum melanjutkan aktifitas ke dalam sistem ini. <br/> <strong>Perlu diingat bahwa Password ibarat identitas diri jadi jangan diberitahu ke yang lain ya!</strong> <br><br> BUTUH BANTUAN? Klik <a href="<?php echo base_url('assets/img/gantipass.jpg'); ?>" target="_blank" style="color: red;">disini</a>.</center>
+          <center><strong>TOLONG DIBACA!</strong><br/>Demi keamanan dan kenyamanan kedepannya Anda diwajibakan untuk mengubah password sebelum melanjutkan aktifitas ke dalam sistem ini. <br/> <strong>Perlu diingat bahwa Password ibarat identitas diri jadi jangan diberitahu ke yang lain ya!</strong> <br><br> BUTUH BANTUAN? Klik <a href="<?php echo base_url('assets/img/other/gantipass.jpg'); ?>" target="_blank" style="color: red;">disini</a>.</center>
         </div>
 			<form action="<?php echo base_url('changepwd/process_ubah'); ?>" method="POST">
                     <span>Password Lama :</span>

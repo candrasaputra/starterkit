@@ -15,17 +15,6 @@ class Users_m extends CI_Model {
         return $num_rows;
     }
 
-    function get_where_join_role($val){
-        $table = $this->get_table();
-        $this->db->select("u.*,r.roleName,r.roleAlias");
-        $this->db->from("$table u");
-        $this->db->join('roles r', 'r.roleID = u.roleID', 'left');
-        $this->db->where("u.id", $val);
-        $this->db->order_by('u.id');
-        $query=$this->db->get();
-        return $query;
-    }
-
     /*Kode Dasar*/
     function get_table() {
         $table = "users";
