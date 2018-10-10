@@ -222,7 +222,7 @@ class Admin extends MX_Controller
         }
 
         if( $this->input->post() && $this->input->post('cancel') )
-            redirect("/admin/manage-user/{$user_id}", 'refresh');
+            redirect("/admin/manage_user/{$user_id}", 'refresh');
 
 
         if( $this->input->post() && $this->input->post('save') )
@@ -240,7 +240,7 @@ class Admin extends MX_Controller
                 }
             }
 
-            redirect("/admin/manage-user/{$user_id}", 'refresh');
+            redirect("/admin/manage_user/{$user_id}", 'refresh');
         }
 
         $user_groups    =   $this->ion_auth_acl->get_user_groups($user_id);

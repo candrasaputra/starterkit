@@ -341,8 +341,8 @@ class Ion_auth_acl_model extends Ion_auth_model
 
         $existing_group_permission  =   $this->db->get_where($this->tables['users_permissions'], $data)->num_rows();
 
-        $data['created_at']     =   strtotime('now');
-        $data['updated_at']     =   strtotime('now');
+        $data['created_at']     =   date('Y-m-d H:i:s');
+        $data['updated_at']     =   date('Y-m-d H:i:s');
         $data['value']          =   $value;
 
         $this->db->trans_start();
@@ -436,8 +436,8 @@ class Ion_auth_acl_model extends Ion_auth_model
 
         $existing_group_permission  =   $this->db->get_where($this->tables['group_permissions'], $data)->num_rows();
 
-        $data['created_at']     =   strtotime('now');
-        $data['updated_at']     =   strtotime('now');
+        $data['created_at']     =   date('Y-m-d H:i:s');
+        $data['updated_at']     =   date('Y-m-d H:i:s');
         $data['value']          =   $value;
 
         $this->db->trans_start();

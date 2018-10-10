@@ -1,7 +1,7 @@
 <h1>Manage User Permissions</h1>
 
 <ul>
-    <li><?php echo anchor("/admin/manage-user/{$user_id}", 'Back to user'); ?></li>
+    <li><?php echo anchor("/admin/manage_user/{$user_id}", 'Back to user'); ?></li>
 </ul>
 
 <?php echo form_open(); ?>

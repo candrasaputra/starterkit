@@ -1,7 +1,7 @@
 <h1>Manage Permissions</h1>
 
 <ul>
-    <li><?php echo anchor('/admin/add-permission', 'Add Permission'); ?></li>
+    <li><?php echo anchor('/admin/add_permission', 'Add Permission'); ?></li>
     <li><?php echo anchor('/admin/manage', 'Back to admin'); ?></li>
 </ul>
 

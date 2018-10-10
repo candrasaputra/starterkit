@@ -16,7 +16,7 @@
         <tr>
             <td><?php echo $user->email; ?></td>
             <td>
-                <a href="/admin/manage-user/<?php echo $user->id; ?>">Manage User</a>
+                <a href="<?= base_url() ?>admin/manage_user/<?php echo $user->id; ?>">Manage User</a>
             </td>
         </tr>
     <?php endforeach; ?>

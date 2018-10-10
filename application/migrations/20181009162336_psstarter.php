@@ -298,12 +298,12 @@ class Migration_psstarter extends CI_Migration {
 				'DEFAULT ' => 0
 			),
 			'created_at' => array(
-				'type' => 'INT',
-				'constraint' => '11'
+				'type' => 'DATETIME',
+				'null' => TRUE
 			),
 			'updated_at' => array(
-				'type' => 'INT',
-				'constraint' => '11'
+				'type' => 'DATETIME',
+				'null' => TRUE
 			)
 		));
 		$this->dbforge->add_key('id', TRUE);
@@ -315,7 +315,8 @@ class Migration_psstarter extends CI_Migration {
 				'id' => '1',
 				'group_id' => '1',
 				'perm_id' => '1',
-				'value' => 1
+				'value' => 1,
+				'created_at' => date('Y-m-d H:i:s')
 			)
 		);
 		$this->db->insert_batch('groups_permissions', $data);
@@ -347,12 +348,12 @@ class Migration_psstarter extends CI_Migration {
 				'DEFAULT ' => 0
 			),
 			'created_at' => array(
-				'type' => 'INT',
-				'constraint' => '11'
+				'type' => 'DATETIME',
+				'null' => TRUE
 			),
 			'updated_at' => array(
-				'type' => 'INT',
-				'constraint' => '11'
+				'type' => 'DATETIME',
+				'null' => TRUE
 			)
 		));
 		$this->dbforge->add_key('id', TRUE);
