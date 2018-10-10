@@ -138,8 +138,7 @@ class Migration_psstarter extends CI_Migration {
 			'changePwd' => array(
 				'type' => 'TINYINT',
 				'constraint' => '1',
-				'default' => 0,
-				'null' => FALSE
+				'default' => 0
 			)
 
 		));
@@ -239,6 +238,125 @@ class Migration_psstarter extends CI_Migration {
 		$this->dbforge->add_key('id', TRUE);
 		$this->dbforge->create_table('login_attempts');
 
+		// Drop table 'permissions' if it exists
+		$this->dbforge->drop_table('permissions', TRUE);
+
+		// Table structure for table 'permissions'
+		$this->dbforge->add_field(array(
+			'id' => array(
+				'type' => 'INT',
+				'constraint' => '11',
+				'unsigned' => TRUE,
+				'auto_increment' => TRUE
+			),
+			'perm_key' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '30'
+			),
+			'perm_name' => array(
+				'type' => 'VARCHAR',
+				'constraint' => '100'
+			)
+		));
+		$this->dbforge->add_key('id', TRUE);
+		$this->dbforge->create_table('permissions');
+		
+		// Dumping data for table 'permissions'
+		$data = array(
+			array(
+				'id' => '1',
+				'perm_key' => 'access_admin',
+				'perm_name' => 'access_admin'
+			)
+		);
+		$this->db->insert_batch('permissions', $data);
+
+		// Drop table 'groups_permissions' if it exists
+		$this->dbforge->drop_table('groups_permissions', TRUE);
+
+		// Table structure for table 'groups_permissions'
+		$this->dbforge->add_field(array(
+			'id' => array(
+				'type' => 'INT',
+				'constraint' => '11',
+				'unsigned' => TRUE,
+				'auto_increment' => TRUE
+			),
+			'group_id' => array(
+				'type' => 'INT',
+				'constraint' => '11',
+				'unsigned' => TRUE
+			),
+			'perm_id' => array(
+				'type' => 'INT',
+				'constraint' => '11',
+				'unsigned' => TRUE
+			),
+			'value' => array(
+				'type' => 'TINYINT',
+				'constraint' => '4',
+				'DEFAULT ' => 0
+			),
+			'created_at' => array(
+				'type' => 'INT',
+				'constraint' => '11'
+			),
+			'updated_at' => array(
+				'type' => 'INT',
+				'constraint' => '11'
+			)
+		));
+		$this->dbforge->add_key('id', TRUE);
+		$this->dbforge->create_table('groups_permissions');
+
+		// Dumping data for table 'groups_permissions'
+		$data = array(
+			array(
+				'id' => '1',
+				'group_id' => '1',
+				'perm_id' => '1',
+				'value' => 1
+			)
+		);
+		$this->db->insert_batch('groups_permissions', $data);
+
+		// Drop table 'users_permissions' if it exists
+		$this->dbforge->drop_table('users_permissions', TRUE);
+
+		// Table structure for table 'users_permissions'
+		$this->dbforge->add_field(array(
+			'id' => array(
+				'type' => 'INT',
+				'constraint' => '11',
+				'unsigned' => TRUE,
+				'auto_increment' => TRUE
+			),
+			'user_id' => array(
+				'type' => 'MEDIUMINT',
+				'constraint' => '8',
+				'unsigned' => TRUE
+			),
+			'perm_id' => array(
+				'type' => 'INT',
+				'constraint' => '11',
+				'unsigned' => TRUE
+			),
+			'value' => array(
+				'type' => 'TINYINT',
+				'constraint' => '1',
+				'DEFAULT ' => 0
+			),
+			'created_at' => array(
+				'type' => 'INT',
+				'constraint' => '11'
+			),
+			'updated_at' => array(
+				'type' => 'INT',
+				'constraint' => '11'
+			)
+		));
+		$this->dbforge->add_key('id', TRUE);
+		$this->dbforge->create_table('users_permissions');
 	}
 
 	public function down()
@@ -247,6 +365,9 @@ class Migration_psstarter extends CI_Migration {
 		$this->dbforge->drop_table('groups', TRUE);
 		$this->dbforge->drop_table('users_groups', TRUE);
 		$this->dbforge->drop_table('login_attempts', TRUE);
+		$this->dbforge->drop_table('permissions', TRUE);
+		$this->dbforge->drop_table('groups_permissions', TRUE);
+		$this->dbforge->drop_table('users_permissions', TRUE);
 	}
 
 }

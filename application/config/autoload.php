@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'form_validation', 'session', 'input', 'users/ion_auth', 'encryption');
+$autoload['libraries'] = array('database', 'form_validation', 'session', 'input', 'users/ion_auth', 'encryption', 'ion_auth_acl');
 
 /*
 | -------------------------------------------------------------------
